@@ -267,6 +267,7 @@
                 console.log(http, 'data')
             }else{
               alert('please enter correct credentials')
+              document.getElementById('loading').innerHTML = ""
             }
         }
         document.getElementById("loading").innerHTML = '<img src="https://sabarimala.keralartc.com/img/loading.gif" />'
