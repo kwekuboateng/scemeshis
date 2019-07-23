@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Register</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+    .avatar{
+        width: 180px;
+        height: 180px;
+        margin: 20px;
+        align-items: center;
+        border-radius: 100px;
+
+    }
+</style>
+</head>
+
+<body >
+        <div class="container">
+                <div class="row">
+                  <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+                    <div class="card card-signin my-5">
+                      <div class="card-body">
+                          <div class="text-center">
+                                <img id="logoUrl" class="avatar" src="http://placeimg.com/80/80/people">
+                          </div>
+                          <h4 id="eventName" class="text-center"></h4>
+                        <h5 class="card-title text-center">Registration kiosk</h5>
+                        <form class="user">
+                                <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="attendantName" placeholder="Full Name">
+                                      </div>
+                                      <div class="form-group">
+                                            <input type="number" class="form-control form-control-user" id="attendantPhone" placeholder="Phone Number">
+                                          </div>
+                                      <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" id="attendantEmail" placeholder="Email Address">
+                                      </div>
+
+                                      <div class="form-group">
+                                          <input type="text" class="form-control form-control-user" id="attendantOrg" placeholder="Organization">
+                                        </div>
+                                    
+                    
+                         
+
+                                      <a onclick="createAttendant()" class="btn btn-primary btn-user btn-block">
+                                            Register Account
+                                          </a>
+                         
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+  <!-- <script src="js/api.js"></script> -->
+  <script>
+     function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var myName = getParameterByName('name'); 
+    var id = getParameterByName('id'); 
+    var message = getParameterByName('message'); 
+    var logoUrl = getParameterByName('logoUrl');
+    var pluLink = getParameterByName('pluLink'); 
+    var ratingMessage = getParameterByName('ratingMessage'); 
+    var submitMessage = getParameterByName('submitMessage'); 
+    var description = getParameterByName('description');
+
+    var img = document.querySelector('#logoUrl');
+        img.src = logoUrl;
+    var eventName = document.querySelector('#eventName');
+        eventName.innerHTML = 'Welcome To ' + myName;
+        var baseUrl = 'https://marakesh-api.herokuapp.com'
+
+        function createAttendant (){
+      var http = new XMLHttpRequest();
+      var loginUrl = `${baseUrl}/api/attendants` 
+      var params = JSON.stringify({
+        name: document.querySelector('#attendantName').value,
+        eventId: id,
+        email: document.querySelector('#attendantEmail').value,
+        phoneNumber: document.querySelector('#attendantPhone').value,
+        organisation: document.querySelector('#attendantOrg').value
+      });
+      console.log(JSON.parse(params), 'parrrams');
+      http.open('POST', loginUrl, true);
+ 
+         //Send the proper header information along with the request
+         http.setRequestHeader("Content-Type", "application/json");
+
+         http.onreadystatechange = function() {//Call a function when the state changes.
+          if(http.readyState == 4 && http.status == 201) {
+              events = http.responseText
+
+              console.log(http, 'http')
+            // document.getElementById('loading3').style.display = "none"
+            window.open(`/plu.html?id=${id}&name=${name}&logoUrl=${logoUrl}&ratingMessage=${ratingMessage}&description=${description}&message=${message}&pluLink=${pluLink}`)
+              
+          }
+      }
+        // document.getElementById('loading3').style.display = 'inline-block'
+        http.send(params);
+        
+    }
+    
+  </script>
+
+</body>
+
+</html>

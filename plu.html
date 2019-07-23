@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Register</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+    .avatar{
+        width: 180px;
+        height: 180px;
+        margin: 20px;
+        align-items: center;
+        border-radius: 100px;
+
+    }
+</style>
+</head>
+
+<body >
+        <div class="container-fluid" style="padding: 0px; margin: 0px;">
+                <style type="text/css">
+                    .logo-box {
+                    margin: 20px auto 20px auto;
+                    max-width: 640px;
+                    text-align: center;
+                }
+                .logo-box img{ max-height: 150px;}
+                .middle-section{
+                    min-height: 40%;
+                    padding: 24px 0;
+                    background: #a32f54;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+            
+                }
+                .middle-section h1{ font-size: 25px }
+                .middle-section h2{font-weight: 100; font-size: 23px}
+                .middle-section h1,h2,h3,h4{color:#ffffff !important;}
+                .welcome-text{font-size: 3.5em;}
+                .theme-text{font-size: 18px;line-height: 24px;font-weight: 100;}
+                .footer-section{text-align: center; padding: 20px 0;}
+                </style>
+                <div class="logo-box">
+                    <img id="logo" src="" alt="Logo">
+                    
+                </div>
+                <div class="middle-section">
+                    <h1 id="eventName">
+                        
+                    </h1>
+                            <h2 id="desc">
+                       18th July ,2019
+                        <br>
+                            SWISS SPIRIT ALISA HOTEL, ACCRA
+                        <br>
+                    </h2>
+                    <h3 class="welcome-text">
+                        You are welcome
+                    </h3>
+                    <h2>
+                        The event brochure has information you should see
+                    </h2>
+                    <div>
+                                    <a id="pluLink" class="btn btn-primary btn-lg" href="https://bit.ly/2JKGq7J" download="" style="background-color: #0c0c0c; color: #fff;">
+                            <i class="fa fa-file-pdf-o"></i> Download the Programme
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    Powered by The Galamseyers 
+                </div>
+            </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+
+  <script>
+     function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var myName = getParameterByName('name'); 
+    var id = getParameterByName('id'); 
+    var message = getParameterByName('message'); 
+    var logoUrl = getParameterByName('logoUrl');
+    var pluLink = getParameterByName('pluLink'); 
+    var ratingMessage = getParameterByName('ratingMessage'); 
+    var submitMessage = getParameterByName('submitMessage'); 
+    var description = getParameterByName('description')
+
+    var eventName = document.querySelector('#eventName');
+        eventName.innerHTML = myName;
+    var logo = document.querySelector('#logo');
+        logo.src = logoUrl;
+    var plu = document.querySelector('#pluLink');
+        plu.href = pluLink;
+    var desc = document.querySelector('#desc');
+        desc.innerHTML = description
+  </script>
+  
+
+</body>
+
+</html>
