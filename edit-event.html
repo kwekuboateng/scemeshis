@@ -17,8 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="css/avatar.css" rel="stylesheet">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="css/avatar.css" rel="stylesheet"> 
+
 
 </head>
 
@@ -31,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -57,7 +57,12 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Create Event</span></a>
       </li>
+     
 
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
 
     </ul>
     <!-- End of Sidebar -->
@@ -79,7 +84,6 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-  
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -124,36 +128,99 @@
             <h1 class="h3 mb-0 text-gray-800">Events</h1>
             <a href="create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Create Event</a>
           </div>
-          <span id="loading3" class="loading"></span>
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+          <div class="box">
+          <form class="form " >
+           
+              <div class="row text-center">
+                
+                  <div class="col-lg-6"> 
+                    <div class="content" onclick="clickInput1()">
+                      <div class="content-overlay"   >
+                        <div class="content-details fadeIn-bottom">
+                          <h3 class="content-title">Upload</h3>
+                        </div>
+                      </div>
+                      <div class="content-loading" >
+                        <div class="content-loading-details ">
+                          <div id="loading" class="loading"></div>
+                        </div>
+                      </div>
+                         <img id="editlogo" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
+                         <!--<div class="content-details fadeIn-bottom">-->
+                           <!--<h3 class="content-title">Upload</h3>-->
+                         <!--</div>-->
+                 
+                       <input type="file"  id="editfile" class="form-control" onchange="uploadLogo()"  style="display:none;"/>
+                 
+                     </div>
+                     <div class="img-title">Upload Logo</div>
                   </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <!-- <thead>
-                          <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Business Logo</th>
-                            <th>Message</th>
-                            <th>PLU Link</th>
-                            <th>Created</th>
-                            <th>Attendant</th>
-                          </tr>
-                        </thead> -->
-              
-                        <!-- <tbody id="tbody">
-                      
-                        </tbody> -->
-                      </table>
-                    </div>
+                  <div class="col-lg-6"> 
+                      <div class="content" onclick="clickInput2()">
+                          <div class="content-overlay"   >
+                            <div class="content-details fadeIn-bottom">
+                              <h3 class="content-title">Upload</h3>
+                            </div>
+                          </div>
+                          <div class="content-loading" >
+                            <div class="content-loading-details ">
+                              <div id="loading1" class="loading"></div>
+                            </div>
+                          </div>
+                             <img id="editplu" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
+                             <!--<div class="content-details fadeIn-bottom">-->
+                               <!--<h3 class="content-title">Upload</h3>-->
+                             <!--</div>-->
+                     
+                           <input type="file"  id="editinput" class="form-control" onchange="uploadProgramLineUp()" accept="image/*"  style="display:none;"/>
+                     
+                         </div>
+                         <div class="img-title">Upload Program Lineup</div>
                   </div>
+                </div>
 
-      
-              </div>
+                <span id="loading3" class="loading"></span>
+              <fieldset>
+                  <label class="mb-0" for="eventName">Event Name</label>
+                  <div class="row mb-1">
+                    <div class="col-lg-6">
+                      <input class="form-control" id="eventName" name="eventName" required="" type="text">
+                    </div>
+                   </div>
+                    
+                      <div class="row mb-1">
+                            <div class="col-lg-6">
+                                <label class="mb-0" for="rating">Rating Message</label>
+                                <textarea class="form-control" id="editrating" name="rating1" required="" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <label class="mb-0" for="submitMessage">Submit Message</label>
+                                <textarea class="form-control" id="editsubmit" name="submitMessage" required="" rows="2"></textarea>
+                              </div>
+                      </div>
+                        
+                      <div class="row mb-1">
+                            <div class="col-lg-6">
+                                <label class="mb-0" for="message2">Message</label>
+                              <textarea class="form-control" id="editmessage" name="message2" required="" rows="2"></textarea>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="mb-0" for="description">Description</label>
+                                <textarea  class="form-control" id="editdescription" name="description1" required="" rows="2"></textarea>
+                          </div>
+                      </div>
+                      <div style="margin-top: 35px">
+                          <button onclick="editEvents()" class="btn btn-secondary btn-lg float-left" type="button">Create Event</button>
+                      </div>
+                          
+              </fieldset>
+           </form>
+            </div>
+          </div><!-- /form contact -->
+        </div>
+
+        </div>
         <!-- /.container-fluid -->
 
       </div>
@@ -184,7 +251,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" onclick="logout()">Logout</a>
+          <a class="btn btn-primary" href="">Logout</a>
         </div>
       </div>
     </div>
@@ -197,6 +264,7 @@
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   
+
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   <script src="js/api.js"></script>
@@ -207,15 +275,6 @@
         let data = JSON.parse(localStorage.getItem('data'));
         displayName.textContent = data.name;
     };
-
-    function displayContent(){
-      
-      getEvents();
-   
-      setTimeout(example, 3000);
-      }
-    
-    document.body.onload = displayContent;
   </script>
 
 </body>

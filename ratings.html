@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Ratings</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/rating.css" rel="stylesheet">
+  <link href="css/avatar.css" rel="stylesheet">
+
+</head>
+
+<body >
+        <div class="container">
+                <div class="row">
+                  <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+                    <div class="card card-signin my-5">
+                      <div class="card-body">
+                          <div class="text-center">
+                                <img id="logoUrl" class="avatar" src="http://placeimg.com/80/80/people">
+                          </div>
+                          <h4 id="eventName" class="text-center"></h4>
+                        <h5 class="card-title text-center">Please Rate Event</h5>
+                        <div id="toast">
+                            <div id="img">Icon</div>
+                        <div id="desc">A notification message..</div>
+                        </div>
+                        <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" checked="checked" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                              
+                        </div>
+                        <div class="text-center">
+                                <button class="btn btn-success" type="button" onclick="submitRating()">Submit Rating</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+  <!-- <script src="js/api.js"></script> -->
+  <script>
+     function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var sID = getParameterByName('sID'); 
+    var eID = getParameterByName('eID'); 
+    var rMsg = getParameterByName('rMsg'); 
+    var logoUrl = getParameterByName('logoUrl');
+    
+    document.querySelector('#logoUrl').src = logoUrl;
+
+    var star1 = document.getElementById('star1');
+    var star2 = document.getElementById('star2');
+    var star3 = document.getElementById('star3');
+    var star4 = document.getElementById('star4');
+    var star5 = document.getElementById('star5');
+
+    var baseUrl = 'https://marakesh-api.herokuapp.com'
+    function submitRating (){
+        if(star1.checked){
+        score = star1.value;
+        }else if(star2.checked){
+            score = star2.value;
+        }else if(star3.checked){
+            score = star3.value;
+        }else if(star4.checked){
+            score = star4.value;
+        }else if(star5.checked){
+            score = star5.value;
+        }else {
+            console.log('nothing checked');
+        }
+    
+
+      var http = new XMLHttpRequest();
+      var loginUrl = `${baseUrl}/api/ratings` 
+      var params = JSON.stringify({
+        score: this.score,
+        eventId: eID,
+        specialId: sID,
+      });
+      console.log(JSON.parse(params), 'parrrams');
+      http.open('POST', loginUrl, true);
+ 
+         //Send the proper header information along with the request
+         http.setRequestHeader("Content-Type", "application/json");
+
+         http.onreadystatechange = function() {//Call a function when the state changes.
+          if(http.readyState == 4 && http.status == 201) {
+              events = http.responseText
+
+              console.log(http, 'http')
+            // document.getElementById('loading3').style.display = "none"
+            document.getElementById('desc').innerHTML = rMsg;
+            var x = document.getElementById("toast")
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+              
+          }else if(http.readyState == 4 && http.status == 400){
+            document.getElementById('desc').innerHTML = 'Please select your rating';
+            var x = document.getElementById("toast")
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+          }
+      }
+        // document.getElementById('loading3').style.display = 'inline-block'
+        http.send(params);
+        
+    }
+    
+  </script>
+
+</body>
+
+</html>

@@ -39,7 +39,7 @@
       xhr.send(formData);
     }
 
-    //upload program line
+    //upload program line up
     function uploadProgramLineUp() {
       
       // document.querySelector('#runinput').click()
@@ -69,6 +69,8 @@
       document.getElementById('loading1').style.display = 'inline-block'
       xhr.send(formData);
     }
+
+    //end upload program line up
   
 
 
@@ -88,7 +90,7 @@
         ratingMessage: document.querySelector('#rating1').value,
         pluLink: document.querySelector('#plu').src
       });
-      console.log(JSON.parse(params), 'parrrams');
+      
       http.open('POST', loginUrl, true);
  
          //Send the proper header information along with the request
@@ -100,11 +102,19 @@
 
               
             document.getElementById('loading3').style.display = "none"
-           
-              
                   localStorage.setItem('events', events)
-             
-              console.log(http, 'events')
+                  document.getElementById('formId').reset();
+                  document.getElementById('desc').textContent = 'Successfully created event'; 
+            var x = document.getElementById("toast")
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
+              
+          }else if (http.readyState == 4 && http.status == 400){
+            document.getElementById('desc').textContent = 'Fill all fields and try again';
+              document.getElementById('img').src = logoUrl
+            var x = document.getElementById("toast")
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
           }
       }
         document.getElementById('loading3').style.display = 'inline-block'
@@ -112,7 +122,7 @@
         
     }
     var tring = JSON.parse(localStorage.getItem('events'))
-    console.log(tring, 'tttii')
+    
     //get all events 
     var globalCounter = 0;
     var tbody = document.getElementById('tbody');
@@ -121,10 +131,10 @@
     function example() {
      
       var data = JSON.parse(localStorage.getItem('events')); // create object
+      console.log(data, 'data')
      
       var table = document.createElement("table");
       table.id = 'dataTable';
-      console.log(table, 'tabll')
   
       var thead = document.createElement("thead");
       table.appendChild(thead);
@@ -142,6 +152,7 @@
       var descHeader = document.createElement("th");    
       var ratingHeader = document.createElement("th");
       var buttonHeader = document.createElement("th");
+      var submitHeader = document.createElement("th");
 
       
      
@@ -150,6 +161,7 @@
       messageHeader.innerHTML = 'Message';
       descHeader.innerHTML = 'Description';
       ratingHeader.innerHTML = 'Rating Message'
+      submitHeader.innerHTML = 'Submit Message'
       buttonHeader.innerHTML = 'Attendant Page'
   
       // header.appendChild(idHeaderCell);
@@ -160,6 +172,7 @@
       header.appendChild(descHeader);
      
       header.appendChild(ratingHeader);
+      header.appendChild(submitHeader);
       header.appendChild(logoHeader);
       header.appendChild(buttonHeader);
    
@@ -174,7 +187,8 @@
           var ratingMessage = data[i].ratingMessage;
           var description = data[i].description;
           var message = data[i].message;
-          var pluLink = data[i].pluLink
+          var pluLink = data[i].pluLink;
+          var submitMessage= data[i].submitMessage
 
   
           var tr = document.createElement("tr");
@@ -185,21 +199,16 @@
             var messageCell = document.createElement("th");
             var descCell = document.createElement("th");    
             var ratingCell = document.createElement("th");
+            var submitCell = document.createElement("th");
             var buttonCell = document.createElement("input");
                 buttonCell.setAttribute('type', 'button');
                 buttonCell.setAttribute('name', 'Open');
                 buttonCell.setAttribute('value', 'Open');
                 buttonCell.classList.add('btn-primary');
+                buttonCell.setAttribute( 'onclick', 
 
-               
-                buttonCell.addEventListener('click', function(event) {
-                  // Stop the link from redirecting
-                  event.preventDefault();
-              
-                  // Redirect instead with JavaScript
-                  window.open(`/attendant-reg.html?id=${id}&name=${name}&logoUrl=${logoUrl}&ratingMessage=${ratingMessage}&description=${description}&message=${message}&pluLink=${pluLink}`)
-                 
-              }, false);
+                  "window.open" + `("/attendant-reg.html?id=${id}&name=${name}&logoUrl=${logoUrl}&ratingMessage=${ratingMessage}&submitMessage=${submitMessage}&description=${description}&message=${message}&pluLink=${pluLink}")`)
+                
                
 
           var createImg = document.createElement('img');
@@ -207,13 +216,13 @@
               createImg.width = '100';
               createImg.height = '70';
 
-        
-  
+            
           // idCell.appendChild(document.createTextNode(id));
           nameCell.appendChild(document.createTextNode(name));
           messageCell.appendChild(document.createTextNode(message));
           descCell.appendChild(document.createTextNode(description));
           ratingCell.appendChild(document.createTextNode(ratingMessage));
+          submitCell.appendChild(document.createTextNode(submitMessage));
           logoCell.appendChild(createImg);
           // buttonCell.appendChild()
   
@@ -222,6 +231,7 @@
           tr.appendChild(messageCell);
           tr.appendChild(descCell);
           tr.appendChild(ratingCell);
+          tr.appendChild(submitCell);
           tr.appendChild(logoCell);
           tr.appendChild(buttonCell);
   
@@ -230,12 +240,8 @@
       document.querySelector('#dataTable').appendChild(table);
   }
   
-    // const getAllEvents = () => {
-     
-    // }
 
      //login
-
 
      function login (){
         var http = new XMLHttpRequest();
@@ -265,16 +271,18 @@
                 window.location.href = '/dashboard.html'
                
                 console.log(http, 'data')
+            }else if (http.readyState == 4 && http.status == 400){
+              document.getElementById('loading').innerHTML = ""
+                  alert('Please enter correct credentials and try again')
+
             }
-            // else{
-            //   alert('please enter correct credentials')
-            //   document.getElementById('loading').innerHTML = ""
-            // }
         }
         document.getElementById("loading").innerHTML = '<img src="https://sabarimala.keralartc.com/img/loading.gif" />'
         http.send(params);
      }
 
+    //logout 
+  
      function logout (){
        localStorage.clear();
        window.location.href = '/'
@@ -347,20 +355,6 @@
    }
 
      //populate dashboard
-     function displayContent(){
-      var displayName = document.querySelector('#displayName');  
-
-      if(localStorage.getItem('data')){
-          let data = JSON.parse(localStorage.getItem('data'));
-          displayName.textContent = data.name;
-      };
-        getEvents();
      
-        example();
-    }
-   
-
- 
-  document.body.onload = displayContent;
  
   
