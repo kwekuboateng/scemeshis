@@ -16,7 +16,7 @@
         file = document.getElementById("file").files[0],
         xhr = new XMLHttpRequest(),
         cloudName = "ds0zewglg";
-        console.log(file, 'file')
+  
     
       formData.append("file", file);
       formData.append("upload_preset", "fy9bo9ll"); // REQUIRED
@@ -97,31 +97,24 @@
          http.setRequestHeader("Content-Type", "application/json");
 
          http.onreadystatechange = function() {//Call a function when the state changes.
-          if(http.readyState == 4 && http.status == 200) {
+          if(http.readyState == 4 && http.status == 201) {
               events = http.responseText
 
-              
-            document.getElementById('loading3').style.display = "none"
                   localStorage.setItem('events', events)
-                  document.getElementById('formId').reset();
-                  document.getElementById('desc').textContent = 'Successfully created event'; 
-            var x = document.getElementById("toast")
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
-              
+                  alert('Successfully created event')
+                  window.location.href = "/events.html"
+                 
           }else if (http.readyState == 4 && http.status == 400){
-            document.getElementById('desc').textContent = 'Fill all fields and try again';
-              document.getElementById('img').src = logoUrl
-            var x = document.getElementById("toast")
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
+            alert('Please fill all fields')
           }
       }
-        document.getElementById('loading3').style.display = 'inline-block'
+        
         http.send(params);
         
     }
-    var tring = JSON.parse(localStorage.getItem('events'))
+   
+
+  
     
     //get all events 
     var globalCounter = 0;
@@ -153,6 +146,8 @@
       var ratingHeader = document.createElement("th");
       var buttonHeader = document.createElement("th");
       var submitHeader = document.createElement("th");
+      var editHeader = document.createElement("th");
+
 
       
      
@@ -162,18 +157,17 @@
       descHeader.innerHTML = 'Description';
       ratingHeader.innerHTML = 'Rating Message'
       submitHeader.innerHTML = 'Submit Message'
+      editHeader.innerHTML = 'Edit Event'
       buttonHeader.innerHTML = 'Attendant Page'
   
       // header.appendChild(idHeaderCell);
       header.appendChild(nameHeader);
-      header.appendChild(messageHeader);
-      
-     
+      header.appendChild(messageHeader);   
       header.appendChild(descHeader);
-     
       header.appendChild(ratingHeader);
       header.appendChild(submitHeader);
       header.appendChild(logoHeader);
+      header.appendChild(editHeader);
       header.appendChild(buttonHeader);
    
       thead.appendChild(header);
@@ -200,6 +194,15 @@
             var descCell = document.createElement("th");    
             var ratingCell = document.createElement("th");
             var submitCell = document.createElement("th");
+            var editCell = document.createElement("th");
+            var openCell = document.createElement("th");
+            var editbuttonCell = document.createElement("input");
+                editbuttonCell.setAttribute('type', 'button');
+                editbuttonCell.setAttribute('name', 'Edit');
+                editbuttonCell.setAttribute('value', 'Edit');
+                editbuttonCell.classList.add('btn-success');
+                editbuttonCell.setAttribute('onclick', "window.location.href" + `="/edit-event.html?id=${id}&name=${name}&logoUrl=${logoUrl}&ratingMessage=${ratingMessage}&submitMessage=${submitMessage}&description=${description}&message=${message}&pluLink=${pluLink}"`)
+
             var buttonCell = document.createElement("input");
                 buttonCell.setAttribute('type', 'button');
                 buttonCell.setAttribute('name', 'Open');
@@ -224,6 +227,9 @@
           ratingCell.appendChild(document.createTextNode(ratingMessage));
           submitCell.appendChild(document.createTextNode(submitMessage));
           logoCell.appendChild(createImg);
+          editCell.appendChild(editbuttonCell);
+          openCell.appendChild(buttonCell);
+        
           // buttonCell.appendChild()
   
           // tr.appendChild(idCell);
@@ -233,7 +239,8 @@
           tr.appendChild(ratingCell);
           tr.appendChild(submitCell);
           tr.appendChild(logoCell);
-          tr.appendChild(buttonCell);
+          tr.appendChild(editCell)
+          tr.appendChild(openCell);
   
           tbody.appendChild(tr);
       }
@@ -347,7 +354,6 @@
             localStorage.setItem('events', JSON.stringify(events))
             }
            
-            console.log(events, 'events')
         }
     }
       document.getElementById('loading3').style.display = 'inline-block'

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Buttons</title>
+  <title>Brand Source</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,11 +31,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        </div> -->
+        <div class="sidebar-brand-text mx-3">Brand Source </div>
       </a>
 
       <!-- Divider -->
@@ -95,20 +95,12 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="profile.html">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="#" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -129,6 +121,8 @@
             <a href="create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Create Event</a>
           </div>
           <div class="box">
+              <div id="loading3" class="loading"></div>
+
           <form class="form " >
            
               <div class="row text-center">
@@ -145,12 +139,12 @@
                           <div id="loading" class="loading"></div>
                         </div>
                       </div>
-                         <img id="editlogo" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
+                         <img id="logo" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
                          <!--<div class="content-details fadeIn-bottom">-->
                            <!--<h3 class="content-title">Upload</h3>-->
                          <!--</div>-->
                  
-                       <input type="file"  id="editfile" class="form-control" onchange="uploadLogo()"  style="display:none;"/>
+                       <input type="file"  id="file" class="form-control" onchange="uploadLogo()"  style="display:none;"/>
                  
                      </div>
                      <div class="img-title">Upload Logo</div>
@@ -167,51 +161,49 @@
                               <div id="loading1" class="loading"></div>
                             </div>
                           </div>
-                             <img id="editplu" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
-                             <!--<div class="content-details fadeIn-bottom">-->
-                               <!--<h3 class="content-title">Upload</h3>-->
-                             <!--</div>-->
+                             <img id="plu" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
+                            
                      
-                           <input type="file"  id="editinput" class="form-control" onchange="uploadProgramLineUp()" accept="image/*"  style="display:none;"/>
+                           <input type="file"  id="runinput" class="form-control" onchange="uploadProgramLineUp()" accept="image/*"  style="display:none;"/>
                      
                          </div>
                          <div class="img-title">Upload Program Lineup</div>
                   </div>
                 </div>
 
-                <span id="loading3" class="loading"></span>
               <fieldset>
                   <label class="mb-0" for="eventName">Event Name</label>
                   <div class="row mb-1">
                     <div class="col-lg-6">
-                      <input class="form-control" id="eventName" name="eventName" required="" type="text">
+                      <input class="form-control" id="editEventName" name="eventName" required="" type="text">
                     </div>
                    </div>
                     
                       <div class="row mb-1">
                             <div class="col-lg-6">
                                 <label class="mb-0" for="rating">Rating Message</label>
-                                <textarea class="form-control" id="editrating" name="rating1" required="" rows="2"></textarea>
+                                <textarea class="form-control" id="editRating" name="rating1" required="" rows="2"></textarea>
                             </div>
                             
                             <div class="col-lg-6">
                                 <label class="mb-0" for="submitMessage">Submit Message</label>
-                                <textarea class="form-control" id="editsubmit" name="submitMessage" required="" rows="2"></textarea>
+                                <textarea class="form-control" id="editSubmitMessage" name="submitMessage" required="" rows="2"></textarea>
                               </div>
                       </div>
                         
                       <div class="row mb-1">
                             <div class="col-lg-6">
                                 <label class="mb-0" for="message2">Message</label>
-                              <textarea class="form-control" id="editmessage" name="message2" required="" rows="2"></textarea>
+                              <textarea class="form-control" id="editMessage" name="message2" required="" rows="2"></textarea>
                             </div>
                             <div class="col-lg-6">
                                 <label class="mb-0" for="description">Description</label>
-                                <textarea  class="form-control" id="editdescription" name="description1" required="" rows="2"></textarea>
+                                <textarea  class="form-control" id="editDescription" name="description1" required="" rows="2"></textarea>
                           </div>
                       </div>
                       <div style="margin-top: 35px">
-                          <button onclick="editEvents()" class="btn btn-secondary btn-lg float-left" type="button">Create Event</button>
+                          <button onclick="editEvent()" 
+                          class="btn btn-primary btn-md float-left" type="button">Create Event</button>
                       </div>
                           
               </fieldset>
@@ -275,6 +267,73 @@
         let data = JSON.parse(localStorage.getItem('data'));
         displayName.textContent = data.name;
     };
+  </script>
+  <script>
+       function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var myName = getParameterByName('name'); 
+    var id = getParameterByName('id'); 
+    var message = getParameterByName('message'); 
+    var logoUrl = getParameterByName('logoUrl');
+    var pluLink = getParameterByName('pluLink'); 
+    var ratingMessage = getParameterByName('ratingMessage'); 
+    var submitMessage = getParameterByName('submitMessage'); 
+    var description = getParameterByName('description');
+
+    document.querySelector('#editEventName').value = myName;
+    document.querySelector('#editMessage').value = message;
+    document.querySelector('#editRating').value = ratingMessage;
+    document.querySelector('#editSubmitMessage').value = submitMessage;
+    document.querySelector('#editDescription').value = description;
+    document.querySelector('#logo').src = logoUrl;
+    document.querySelector('#plu').src = pluLink;
+
+
+
+      function editEvent(){
+
+        var http = new XMLHttpRequest();
+        var loginUrl = `https://marakesh-api.herokuapp.com/api/events/${id}` 
+        var params = JSON.stringify({
+          name: document.querySelector('#editEventName').value,
+          logoUrl: document.querySelector('#logo').src,
+          message: document.querySelector('#editMessage').value,
+          description: document.querySelector('#editDescription').value,
+          submitMessage: document.querySelector('#editSubmitMessage').value,
+          ratingMessage: document.querySelector('#editRating').value,
+          pluLink: document.querySelector('#plu').src
+        });
+        http.open('PUT', loginUrl, true);
+        const jwtoken = JSON.parse(localStorage.getItem('data')).token
+           //Send the proper header information along with the request
+           http.setRequestHeader("Authorization", 'Bearer ' + jwtoken);
+  
+           http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                events = http.responseText
+              console.log(http, 'events')
+                
+              document.getElementById('loading3').style.display = "none"
+                    localStorage.setItem('events', events)
+                    alert('Successfully edited event')
+                    // window.location.href = '/events.html'
+                
+            }else if (http.readyState == 4 && http.status == 400){
+             alert('Fill all input fields')
+            }
+        }
+          document.getElementById('loading3').style.display = 'inline-block'
+          http.send(params);
+        console.log(params, 'param');
+
+      }
   </script>
 
 </body>

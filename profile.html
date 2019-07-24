@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Brand Source</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Brand Source</div>
       </a>
 
       <!-- Divider -->
@@ -112,18 +112,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="profile.html">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
+               
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -142,11 +135,27 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">Profile</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
          
-
+          <form class="user">
+               
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="profileName" placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control form-control-user" id="profileEmail" placeholder="Email Address">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+              </div>
+             
+              <a disabled class="btn btn-primary btn-user btn-block">
+                Can't Edit
+              </a>
+              
+            </form>
         </div>
         <!-- /.container-fluid -->
 
@@ -198,11 +207,16 @@
   <script src="js/api.js"></script>
   <script>
     var displayName = document.querySelector('#displayName');  
+    var myName = document.querySelector('#profileName');
+    var email = document.querySelector('#profileEmail');
 
     if(localStorage.getItem('data')){
         let data = JSON.parse(localStorage.getItem('data'));
         displayName.textContent = data.name;
+        myName.value = data.name;
+        email.value = data.email
     };
+
   </script>
 
 </body>
