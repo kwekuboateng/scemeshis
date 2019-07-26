@@ -4,19 +4,18 @@
 <head>
 
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Brand Source</title>
+  <title>BrandSauce</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/brand.css" rel="stylesheet">
   <link href="css/avatar.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
@@ -35,7 +34,7 @@
         <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div> -->
-        <div class="sidebar-brand-text mx-3">Brand Source</div>
+        <div class="sidebar-brand-text mx-3" style="color: #fff">BrandSauce</div>
       </a>
 
       <!-- Divider -->
@@ -43,16 +42,11 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="dashboard.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="events.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Events</span></a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="create-event.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Create Event</span></a>
@@ -121,11 +115,11 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">List of Events</h6>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
-                      <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <div class="table-responsive" id="eventTab">
+                      <!-- <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> -->
                         <!-- <thead>
                           <tr>
                             <th></th>
@@ -141,7 +135,7 @@
                         <!-- <tbody id="tbody">
                       
                         </tbody> -->
-                      </table>
+                      <!-- </table> -->
                     </div>
                   </div>
 
@@ -189,6 +183,8 @@
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
   
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
@@ -205,11 +201,13 @@
       
       getEvents();
    
-      setTimeout(example, 3000);
+      setTimeout(eventTable, 3000);
       }
     
     document.body.onload = displayContent;
   </script>
+  <script src="js/demo/datatables-demo.js"></script>
+
 
 </body>
 

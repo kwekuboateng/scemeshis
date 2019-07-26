@@ -9,56 +9,78 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Brand Source</title>
+  <title>BrandSauce</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/brand.css" rel="stylesheet">
   <link href="css/rating.css" rel="stylesheet">
 <link href="css/avatar.css" rel="stylesheet">
 </head>
 
-<body >
+<body style="background: black">
         <di id="loading3" class="loading"></di>
         <div class="container">
                 <div class="row">
-                  <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+                  <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
                     <div class="card card-signin my-5">
-                      <div class="card-body">
+                      <div class="card-header">
                           <div class="text-center">
-                                <img width="180" id="logoUrl" class="avatar" src="http://placeimg.com/80/80/people">
-                          </div>
-                          <h4 id="eventName" class="text-center"></h4>
-                        <h5 class="card-title text-center">Registration</h5>
+                              <img  id="logoUrl" class="avatar" src="http://promo.enclaveafrica.com/photos/cover-photo/medium.5d2f3941f10d2.jpeg">
+                        </div>
+                      </div>
+                      <div class="card-body" style="background: black">
+                         
+    
                         <div id="toast">
                           <img id="img" src="" />
                             <!-- <div id="img">Icon</div> -->
                         <div id="desc"></div>
                         </div>
-                        <form class="user">
+                        <form id="attendantForm" class="user" style="background: black">
                                 <div class="form-group">
+                                    <label  title="text">Full Name</label>
                                         <input type="text" class="form-control form-control-user" id="attendantName" placeholder="Full Name">
                                       </div>
                                       <div class="form-group">
+                                          <label  title="text">Phone Number</label>
                                             <input type="number" class="form-control form-control-user" id="attendantPhone" placeholder="Phone Number">
                                           </div>
                                       <div class="form-group">
+                                          <label for="star5" title="text">Email</label>
                                         <input type="email" class="form-control form-control-user" id="attendantEmail" placeholder="Email Address">
                                       </div>
 
                                       <div class="form-group">
-                                          <input type="text" class="form-control form-control-user" id="attendantOrg" placeholder="Organization">
+                                          <label for="star5" title="text">Company</label>
+                                          <input type="text" class="form-control form-control-user" id="attendantOrg" placeholder="Company">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="star5" title="text">Position</label>
+                                            <input type="text" class="form-control form-control-user" id="attendantPosition" placeholder="Position">
+                                      </div>
+                                      <div class="custom-control custom-checkbox small">
+                                          <input type="checkbox" class="custom-control-input" id="customCheck">
+                                          <label class="custom-control-label" for="customCheck">I consent to the use of my personal data in accordance with Ghana Data Protection Act, 2012 and the EU GDPR</label>
                                         </div>
                                     
-                    
-                         
-
-                                      <a onclick="createAttendant()" class="btn btn-primary btn-user btn-block">
-                                            Register Account
-                                          </a>
+                                      
+                                      <div class="row" style="margin-top: 20px">
+                                        <div class="col-sm-4 col-md-4 col-lg-4">
+                                            <a onclick="resetForm()" class="btn btn-danger btn-user btn-block">
+                                                clear All
+                                              </a>
+                                        </div>
+                                          <div class="col-sm-8 col-md-8 col-lg-8">
+                                              <a onclick="createAttendant()" class="btn btn-success btn-user btn-block">
+                                                  Submit
+                                              </a>
+                                          </div>
+                                         
+                                      </div>
                          
                         </form>
                       </div>
@@ -78,6 +100,10 @@
   <script src="js/sb-admin-2.min.js"></script>
   <!-- <script src="js/api.js"></script> -->
   <script>
+    function resetForm(){
+      var id = document.querySelector('#attendantForm');
+        id.reset();
+    }
      function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -99,7 +125,6 @@
     var img = document.querySelector('#logoUrl');
         img.src = logoUrl;
     var eventName = document.querySelector('#eventName');
-        eventName.innerHTML = 'Welcome To ' + myName;
         var baseUrl = 'https://marakesh-api.herokuapp.com'
 
         function createAttendant (){
@@ -110,8 +135,10 @@
         eventId: id,
         email: document.querySelector('#attendantEmail').value,
         phoneNumber: document.querySelector('#attendantPhone').value,
-        organisation: document.querySelector('#attendantOrg').value
+        organisation: document.querySelector('#attendantOrg').value,
+        position: document.querySelector('#attendantPosition').value
       });
+      console.log(params, 'params')
       
       http.open('POST', loginUrl, true);
  
@@ -122,19 +149,12 @@
           if(http.readyState == 4 && http.status == 201) {
               events = http.responseText
               document.getElementById('loading3').style.display = "none"            
-              document.getElementById('desc').textContent = submitMessage;
-              document.getElementById('img').src = logoUrl
-            var x = document.getElementById("toast")
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
+              alert(submitMessage);
+              window.location.href = `/submitMessage.html?submitMessage=${submitMessage}`
             
               
           }else if(http.readyState == 4 && http.status ==400){
-            document.getElementById('desc').textContent = 'Please fill all fields and try again';
-              document.getElementById('img').src = logoUrl
-            var x = document.getElementById("toast")
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
+            alert('Please fill all the fields')
           }
       }
         document.getElementById('loading3').style.display = 'inline-block'

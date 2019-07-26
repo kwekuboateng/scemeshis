@@ -9,14 +9,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Brand Source</title>
+  <title>BrandSauce</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/brand.css" rel="stylesheet">
   <link href="css/avatar.css" rel="stylesheet"> 
 
 
@@ -35,7 +35,7 @@
         <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div> -->
-        <div class="sidebar-brand-text mx-3">Brand Source </div>
+        <div class="sidebar-brand-text mx-3" style="color:#fff">BrandSauce </div>
       </a>
 
       <!-- Divider -->
@@ -43,16 +43,11 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="dashboard.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="events.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Events</span></a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="create-event.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Create Event</span></a>
@@ -161,7 +156,7 @@
                               <div id="loading1" class="loading"></div>
                             </div>
                           </div>
-                             <img id="plu" class="image--cover" src="https://cdn0.iconfinder.com/data/icons/communication-2-5/98/59-512.png" alt="Logo" width="180" height="180">
+                             <iframe id="plu" class="image--cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAz1BMVEX///+HxUGTlZiQkpXv7/CLjZHk5OXoMzGxs7Xr6+unqKuho6b5+fm2t7nc3d6Cwze83pyOyE3nIR6AwjLpPTvn5+jnJiN9wSjynJv99PP2urr4ysr7/fjnHBne7s/0sLDoKynC4KXmAADU6b+p1H6YzV/p9N/taWj2+vHj8db97Oz63t7xk5LueHfI467wiYj3xcS12pGu14XQ57qf0G362NeChYjp7+PJyszrU1LBwsSdz2fzp6eRl5Gep5uOyUyOnoSMsGzsZWTuc3LqTkzy4HFMAAAGyUlEQVR4nO2ca1vaSBiGg0htV7dBYhNQouFgihVUFHu0a1f7/3/TzuRECDOTifuGBPvcH5QAyTX3NYd3jhgGAAAAAAAAAAAAAAAAAAAAAAAAAAB4pUz80WB+Ox7fztt3p5OqU0ONf3f7aFmWGcFeNhaDi6pTRcaXwaFjmY0spmXOX4Xk6bnALpFsDPpVJ/B/Mjq3ZHohltneZseLPL8wI6+qTudL6Y+dfL8gHw+3sz6emtL6t4bTrjq1L6CtmYFRNp5vXYRcaNTANKbpV53kQvTP9Utoko3bVBknj8UFWWUcVZ1ubfqHLxFkiqdVp1yXHy8TZAV1S+riuGAjk8Lcihb1ThUmLMdR+Zs/qk69Br7KwBr5vq9qZ60tCP2PCsGwKVE2RE7tq+JAkYVxW6lUPK82/blMNATVitZdlenPZyxPejraqRTNWo8Xv8jb0dVwrlC0BtSpekfH7q003dn+iioXiQV3P7fI+CmthZHgKPmjUKQe8++2dsj4V5boWNDkf+eLHMXD2ho2ZbEwErxzgrS3nbFakTgmBoZNkkL6S5biKAedMHfapqVWNOfkhs33JO3MXJzgpWBs2MhRpG1ruGHrDcmjDvMEE8McRdpRFJ3hRBgM04JLQ7UibWtKZzgSxYoVwZShUtEcU6Qnhs6wLUjrqmDaUK1IkZ4YOsPFelIzgiuGKkWHsm9KZ7je0JgZwVXDRPF87UbSpobMsL+eFeFYbymYMYwVB2t3WpQTi2SGgqGhyRVTglnDUFEwaCZtTOkMBcGCKaYF1wy54kB0H+UIisxQOAVlrk47rRmyLwhvo5yQIjO80JgmXTcUQ9ozradhLfPQ11gw1DYsvR7edK9nH5+eZt3L4PK4e/388dvH2fS4F35+Oe3GTKO3JN3Suhp6HS/AHj4xgd7Qji477iwQOhnaMcNPsSFhKSWdUhQaHu3FeEfMsJNc7tmde27oJm+4saGRL6hvSLlaKjW0Ox3XY/+uQ0N+GZh2PkWG7B1GkofGeufrxYYO5RqUzLBzzKrbs80yqccN7TPD+HR2xJS935HhWcBDXA8N+VRicUNCQbnhDX/x29tzb7ghF2Z8Y4ruSWiYfdJVfkXUNSRdvFDloWF07T374WBp2OOZ+Cw21AgXmoak4TDH8CFjyJWZm9DQICulFumCvtTwjL+YeexF2vDS5c2n2FCxLFPQkHSxW2ZoP8Q+96l6aBjBO4FhGPGPl3fd5VZETUPatW6Zofd8f//Ai+SesWLoJYZBwHefl3f1iQyJlxCl8dBzXS44PJYZhj2CWeq23GKqaUi7gpjTpxlODWOtlF4uI346D43TvEzUMqSdS1Tloc26oUc8KvayLU0vFfFv0veJZ70LGlJvVpDWw9l0enYfXKUNj9nrI0m0kEwKFzQ0F7SCUkP3PrlKG7JOjXctNczrfesYOtR7FKWGJyLDsyBYyA1H6n6NhiF1LSxoyAW9b4bcUDTxXcyQdFhRxNCentx0j/jwyb1UGSp2Y2gZlrBxX9Nwz3Y7Qfwf8syUGyo3ReUbmiVsidI1jIb4dhAdFIbKcpprSNsjVRh6bOyeMgznaVh4tKN5p5uh67qSBwrWLxIefd//IlkM55SyEVpoyEN5MjthHDx0r2ezWRweGb1LhuyJqv2XluM4ij1tpey9JFzHjzktdNQiJXhLmoyYEgzV24TlgtSdmYgyDPMCv1iQPNRHlGL4goLq0G4TSlGOoeE3ih1JcMo7oleSodEvcvLJbJR4JKgsQz5/qpuNTllVMKA8Q2Oid8TSeiz3NFCJhvyYc66jRbqSJqJUw8BROZRolH8IuGRD5nhrSiqk5Sw2cfSgdEPGaNxwrJVjwaZlmT+uNnOOaxOGDH/UHj+ybjc3tRqL+dXFxo5ViA3f7v9Fxf7u8rH9yeSfnzvNvzclFyA23G+S0XqXeXJdDMl28NfW8LXn4fe3dOyuPLkuhuUBQ3pgSA0M6YEhNTCkB4bUwJAeGFIDQ3pgSE1dDHd1yb8h8+S6GO5r/sjA54Pw+++kv64RfyN5cl0MNWeiWrGh9LcnmjAsHaJSKvx1jWaNDT+80ST6Pjdsfs1++L1ZX8OicMPWh+y771sw3AQw1AOGS2BIDwz1gOESGNIDQz1guASG9MBQj+0zfPNek+j74Qg4+2GdR8CvfxbjD5iJev2GRUvp1s0IH+iSf0PmyXUxLA8Y0gNDamBIDwypgSE9MKQGhvTAkBoY0vOHGK7NkpVHNYY7dOcpc+ETGxUY7tAdxsujKsONsnHDzeVfRGvDhoRnKXX5ulFDAAAAAAAAAAAAAAAAAAAAAAAAAAAA/gz+A9y61/CLubSuAAAAAElFTkSuQmCC" alt="Logo" width="180" height="180"></iframe>
                             
                      
                            <input type="file"  id="runinput" class="form-control" onchange="uploadProgramLineUp()" accept="image/*"  style="display:none;"/>

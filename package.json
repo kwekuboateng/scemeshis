@@ -16,11 +16,6 @@
         "admin",
         "app"
     ],
-    "homepage": "https://startbootstrap.com/template-overviews/sb-admin-2",
-    "bugs": {
-        "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/issues",
-        "email": "feedback@startbootstrap.com"
-    },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.9.0",
         "bootstrap": "4.3.1",
