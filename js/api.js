@@ -1,3 +1,4 @@
+
     //global variables
 
     //cloudinary image upload 
@@ -29,7 +30,7 @@
           // Success! You probably want to save the URL somewhere
           document.getElementById('loading').style.display = 'none'
           var response = JSON.parse(xhr.response);
-          document.getElementById('logo').src = response.secure_url;
+          document.getElementById('logo').src = response.secure_url ;
           console.log(response.secure_url, 'na this be logo') // https address of uploaded file
         } else {
           alert("Upload failed. Please try agian.");
@@ -166,33 +167,36 @@
   
       var idHeaderCell = document.createElement("th");
       var nameHeader = document.createElement("th");
-      // var logoHeader = document.createElement("th");
-      var messageHeader = document.createElement("th");
+      var logoHeader = document.createElement("th");
+      // var messageHeader = document.createElement("th");
+      var pluHeader = document.createElement("th");
       var descHeader = document.createElement("th");    
       var attendantHeader = document.createElement("th");
       var buttonHeader = document.createElement("th");
-      var submitHeader = document.createElement("th");
+      // var submitHeader = document.createElement("th");
       var editHeader = document.createElement("th");
 
 
       
-     
+      idHeaderCell.innerHTML = 'Event ID'
       nameHeader.innerHTML = 'Name';
-      // logoHeader.innerHTML = 'Logo';
-      messageHeader.innerHTML = 'Message';
+      logoHeader.innerHTML = 'Logo';
+      pluHeader.innerHTML = 'PLU Link';
+      // messageHeader.innerHTML = 'Message';
       descHeader.innerHTML = 'View Attendants';
-      attendantHeader.innerHTML = 'No. of Attendants'
-      submitHeader.innerHTML = 'Submit Message'
-      editHeader.innerHTML = 'Edit Event'
-      buttonHeader.innerHTML = 'Attendant Page'
+      attendantHeader.innerHTML = 'No. of Attendants';
+      // submitHeader.innerHTML = 'Submit Message';
+      editHeader.innerHTML = 'Edit Event';
+      buttonHeader.innerHTML = 'Attendant Page';
   
-      // header.appendChild(idHeaderCell);
+      header.appendChild(idHeaderCell);
       header.appendChild(nameHeader);
-      header.appendChild(messageHeader);   
+      // header.appendChild(messageHeader);   
       header.appendChild(descHeader);
       header.appendChild(attendantHeader);
-      header.appendChild(submitHeader);
-      // header.appendChild(logoHeader);
+      // header.appendChild(submitHeader);
+      header.appendChild(pluHeader);
+      header.appendChild(logoHeader);
       header.appendChild(editHeader);
       header.appendChild(buttonHeader);
    
@@ -215,10 +219,11 @@
   
           var tr = document.createElement("tr");
   
-            //  var idCell = document.createElement("th");
+             var idCell = document.createElement("th");
             var nameCell = document.createElement("th");
-            // var logoCell = document.createElement("th");
-            var messageCell = document.createElement("th");
+            var logoCell = document.createElement("th");
+            var pluCell = document.createElement("th");
+            // var messageCell = document.createElement("th");
             var descCell = document.createElement("th");
             var descbutton = document.createElement("a");
                 descbutton.setAttribute('name', 'view attendant')
@@ -226,7 +231,7 @@
                 descbutton.setAttribute('onclick', "window.location.href" + `="/listAttendant.html?id=${id}"`)
 
             var attendantCell = document.createElement("th");
-            var submitCell = document.createElement("th");
+            // var submitCell = document.createElement("th");
             var editCell = document.createElement("th");
             var openCell = document.createElement("th");
             var editbuttonCell = document.createElement("input");
@@ -245,33 +250,40 @@
 
                   "window.open" + `("/attendant-reg.html?id=${id}&name=${name}&logoUrl=${logoUrl}&ratingMessage=${ratingMessage}&submitMessage=${submitMessage}&description=${description}&message=${message}&pluLink=${pluLink}")`)
                 
-               
+          var createplu = document.createElement('a');
+              createplu.setAttribute('name', 'PLU Link');
+              createplu.innerHTML = 'PLU Link';
+              createplu.setAttribute('target', '_blank')
+          createplu.href = pluLink ;
+         
 
-          // var createImg = document.createElement('img');
-          //     createImg.src = logoUrl;
-          //     createImg.width = '100';
-          //     createImg.height = '70';
+          var createImg = document.createElement('img');
+              createImg.src = logoUrl;
+              createImg.width = '100';
+              createImg.height = '70';
 
             
-          // idCell.appendChild(document.createTextNode(id));
+          idCell.appendChild(document.createTextNode(id));
           nameCell.appendChild(document.createTextNode(name));
-          messageCell.appendChild(document.createTextNode(message));
+          // messageCell.appendChild(document.createTextNode(message));
           descCell.appendChild(descbutton);
           attendantCell.appendChild(document.createTextNode(attendant.length));
-          submitCell.appendChild(document.createTextNode(submitMessage));
-          // logoCell.appendChild(createImg);
+          // submitCell.appendChild(document.createTextNode(submitMessage));
+          pluCell.appendChild(createplu);
+          logoCell.appendChild(createImg);
           editCell.appendChild(editbuttonCell);
           openCell.appendChild(buttonCell);
         
           // buttonCell.appendChild()
   
-          // tr.appendChild(idCell);
+          tr.appendChild(idCell);
           tr.appendChild(nameCell);
-          tr.appendChild(messageCell);
+          // tr.appendChild(messageCell);
           tr.appendChild(descCell);
           tr.appendChild(attendantCell);
-          tr.appendChild(submitCell);
-          // tr.appendChild(logoCell);
+          // tr.appendChild(submitCell);
+          tr.appendChild(pluCell);
+          tr.appendChild(logoCell);
           tr.appendChild(editCell)
           tr.appendChild(openCell);
   

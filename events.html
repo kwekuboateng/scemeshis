@@ -43,16 +43,20 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="events.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-table"></i>
           <span>Events</span></a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="create-event.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-plus"></i>
           <span>Create Event</span></a>
       </li>
 
 
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
     </ul>
     <!-- End of Sidebar -->
 
@@ -81,7 +85,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span id="displayName" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <i class="fas fa-user fa-lg fa-fw mr-2 text-gray-400"></i>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -109,7 +113,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Events</h1>
-            <a href="create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Create Event</a>
+            <a href="create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Event</a>
           </div>
           <span id="loading3" class="loading"></span>
                 <!-- DataTales Example -->
@@ -119,23 +123,7 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive" id="eventTab">
-                      <!-- <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> -->
-                        <!-- <thead>
-                          <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Business Logo</th>
-                            <th>Message</th>
-                            <th>PLU Link</th>
-                            <th>Created</th>
-                            <th>Attendant</th>
-                          </tr>
-                        </thead> -->
-              
-                        <!-- <tbody id="tbody">
-                      
-                        </tbody> -->
-                      <!-- </table> -->
+                   
                     </div>
                   </div>
 

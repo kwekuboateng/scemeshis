@@ -43,12 +43,12 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="events.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-table"></i>
           <span>Events</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="create-event.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-plus"></i>
           <span>Create Event</span></a>
       </li>
 
@@ -81,7 +81,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span id="displayName" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <i class="fas fa-user fa-lg fa-fw mr-2 text-gray-400"></i>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -116,28 +116,13 @@
                   <div class="card-header py-3">
                     <!-- <h6 class="m-0 font-weight-bold text-primary">List of Attendants</h6> -->
                     <button onclick="generate()" style="float: right" class="m-0 btn-info">Download & Print PDF</button>
+                    <button class=" btn-info" style="float:right; margin-right: 10px" id="csv">Download CSV</button>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive" id="eventTab">
                       <div id="loading" class="loading"></div>
 
-                      <!-- <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> -->
-                        <!-- <thead>
-                          <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Business Logo</th>
-                            <th>Message</th>
-                            <th>PLU Link</th>
-                            <th>Created</th>
-                            <th>Attendant</th>
-                          </tr>
-                        </thead> -->
-              
-                        <!-- <tbody id="tbody">
-                      
-                        </tbody> -->
-                      <!-- </table> -->
+                    
                     </div>
                   </div>
 
@@ -227,13 +212,58 @@
       const doc = new jsPDF();
       doc.autoTable({html: '#dataTable'});
       doc.save('attendants.pdf');
-        // var head;
-        // var body;
-        // var doc = new jsPDF();
-        // doc.autoTable({head: head, body: body});
-        // doc.autoTable({html: '#dataTable', startY: 10});
-        // doc.output("dataurlnewwindow");
+        
     }
+</script>
+<script>
+  function download_csv(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV FILE
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // We have to create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Make sure that the link is not displayed
+    downloadLink.style.display = "none";
+
+    // Add the link to your DOM
+    document.body.appendChild(downloadLink);
+
+    // Lanzamos
+    downloadLink.click();
+}
+
+function export_table_to_csv(html, filename) {
+	var csv = [];
+	var rows = document.querySelectorAll("table tr");
+	
+    for (var i = 0; i < rows.length; i++) {
+		var row = [], cols = rows[i].querySelectorAll("td, th");
+		
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+		csv.push(row.join(","));		
+	}
+
+    // Download CSV
+    download_csv(csv.join("\n"), filename);
+}
+
+document.querySelector("#csv").addEventListener("click", function () {
+    var html = document.querySelector("table").outerHTML;
+	export_table_to_csv(html, "attendant.csv");
+});
+
 </script>
 
 
