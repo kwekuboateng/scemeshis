@@ -141,7 +141,7 @@
               </div>
             </form>
             <button id="editProfileButton" class="btn btn-primary btn-user btn-block">
-              Can't Edit
+              Edit Data
             </button>
 
         </div>
@@ -197,8 +197,11 @@
     // get data
     $(document).ready(function(){
       let data = JSON.parse(localStorage.getItem('data'));
-      $("#nameProfile").val(data.name);
-      $("#profileEmail").val(data.email);
+      if (localStorage.getItem('data')) {
+
+        $("#nameProfile").val(data.name);
+        $("#profileEmail").val(data.email);
+      }
 
       $("#editProfileButton").unbind('click').click(function(){
         $this = $(this);
@@ -216,18 +219,19 @@
         console.log(editedName);
 
         $this.text("Updating....");
-        /*
+
         axios.put(`https://marakesh-api.herokuapp.com/api/users/${data.id}`, {
-          name: editedName
+          name: editedName,
+          email: editedEmail
         }, {headers: {"Authorization": 'Bearer ' + jwtoken}})
         .then(function (response) {
           if(response.status == 200){
             $("#loading3").css("display", "none");
-             localStorage.setItem('data', response.data)
-             console.log(response, 'edit response');
-             alert('Successfully edited event')
+             localStorage.setItem('data', JSON.stringify(response.data))
+             console.log(response.data);
+             alert('Profile Has Been Updated Successfully You Are Going To Be Redirected So You Can Login Again Thank You.')
              $this.text("Udpated Successfully");
-             // window.location.href = '/events.html'
+             window.location.href = '/'
           }else  {
             console.log(response.body);
             $this.text("Error");
@@ -238,7 +242,7 @@
           console.log(error);
           //22
         });
-        */
+
       })
     })
 
