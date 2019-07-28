@@ -49,7 +49,7 @@
           <i class="fas fa-fw fa-plus"></i>
           <span>Create Event</span></a>
       </li>
-    
+
 
 
 
@@ -94,7 +94,7 @@
                 </form>
               </div>
             </li>
-          
+
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -110,7 +110,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-               
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -130,26 +130,20 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Profile</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
-         
+
           <form class="user">
-               
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="profileName" placeholder="Enter Name">
+                <input type="text" class="form-control form-control-user" id="nameProfile" placeholder="User Name">
               </div>
               <div class="form-group">
                 <input type="email" class="form-control form-control-user" id="profileEmail" placeholder="Email Address">
               </div>
-              <div class="form-group">
-                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-              </div>
-             
-              <a disabled class="btn btn-primary btn-user btn-block">
-                Can't Edit
-              </a>
-              
             </form>
+            <button id="editProfileButton" class="btn btn-primary btn-user btn-block">
+              Can't Edit
+            </button>
+
         </div>
         <!-- /.container-fluid -->
 
@@ -197,19 +191,56 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
-
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="js/api.js"></script>
   <script>
-    var displayName = document.querySelector('#displayName');  
-    var myName = document.querySelector('#profileName');
-    var email = document.querySelector('#profileEmail');
+    // get data
+    $(document).ready(function(){
+      let data = JSON.parse(localStorage.getItem('data'));
+      $("#nameProfile").val(data.name);
+      $("#profileEmail").val(data.email);
 
-    if(localStorage.getItem('data')){
-        let data = JSON.parse(localStorage.getItem('data'));
-        displayName.textContent = data.name;
-        myName.value = data.name;
-        email.value = data.email
-    };
+      $("#editProfileButton").unbind('click').click(function(){
+        $this = $(this);
+        // get values updated values
+
+        let editedName = $("#nameProfile").val();
+        let editedEmail = $("#profileEmail").val();
+
+
+
+        $('#loading3').css("display", "inline-block")
+
+        const jwtoken = data.token;
+        console.log(editedEmail);
+        console.log(editedName);
+
+        $this.text("Updating....");
+        /*
+        axios.put(`https://marakesh-api.herokuapp.com/api/users/${data.id}`, {
+          name: editedName
+        }, {headers: {"Authorization": 'Bearer ' + jwtoken}})
+        .then(function (response) {
+          if(response.status == 200){
+            $("#loading3").css("display", "none");
+             localStorage.setItem('data', response.data)
+             console.log(response, 'edit response');
+             alert('Successfully edited event')
+             $this.text("Udpated Successfully");
+             // window.location.href = '/events.html'
+          }else  {
+            console.log(response.body);
+            $this.text("Error");
+
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+          //22
+        });
+        */
+      })
+    })
 
   </script>
 
