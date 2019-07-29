@@ -197,7 +197,7 @@
       // submitHeader.innerHTML = 'Submit Message';
       editHeader.innerHTML = 'Edit Event';
       buttonHeader.innerHTML = 'Rating Over 5';
-      // ratingHeader.innerHTML = 'Ratings';
+      ratingHeader.innerHTML = 'Open Link';
 
       header.appendChild(idHeaderCell);
       header.appendChild(nameHeader);
@@ -209,7 +209,7 @@
       header.appendChild(logoHeader);
       header.appendChild(editHeader);
       header.appendChild(buttonHeader);
-      // header.appendChild(ratingHeader);
+      header.appendChild(ratingHeader);
 
       thead.appendChild(header);
 
@@ -300,6 +300,7 @@
           tr.appendChild(logoCell);
           tr.appendChild(editCell)
           tr.appendChild(ratingCell);
+          tr.appendChild(openCell);
 
           tbody.appendChild(tr);
       }
