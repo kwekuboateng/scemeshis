@@ -92,7 +92,7 @@
         name: document.querySelector('#eventName').value,
         createdBy: JSON.parse(localStorage.getItem('data')).id,
         logoUrl: document.querySelector('#logo').src,
-        message: document.querySelector('#message2').value,
+        // message: document.querySelector('#message2').value,
         description: document.querySelector('#description').value,
         submitMessage: document.querySelector('#submitMessage').value,
         ratingMessage: document.querySelector('#rating1').value,
