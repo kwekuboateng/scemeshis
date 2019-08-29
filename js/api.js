@@ -462,6 +462,7 @@
      //register
 
      function register(){
+        // console.log("Heyyy");
         var http = new XMLHttpRequest();
         var registerUrl = `${baseUrl}/api/users/register`
 
@@ -470,24 +471,21 @@
             email: document.getElementById('exampleInputEmail').value,
             password: document.getElementById('exampleInputPassword').value
         });
-        console.log(params, 'params')
+        // console.log(params, 'params')
         http.open('POST', registerUrl, true);
 
         //Send the proper header information along with the request
         http.setRequestHeader("Content-Type", "application/json");
 
-
-        http.onreadystatechange = function() {//Call a function when the state changes.
+        http.onreadystatechange = function() {
+          //Call a function when the state changes.
             if(http.readyState == 4 && http.status == 201) {
                 data = http.responseText
-
-
-              document.getElementById('loading').innerHTML = "none"
-              alert('successfully created account.')
-              window.location.href = "/index.html"
-
+                document.getElementById('loading').innerHTML = "none"
+                alert('successfully created account.')
+                window.location.href = "/index.html"
                 console.log(http, 'data')
-            }else {
+            } else {
                 alert('ooops. Please fill all fields and try again')
             }
         }
@@ -495,6 +493,7 @@
         http.send(params);
 
      }
+
 
 
    //fetch events
