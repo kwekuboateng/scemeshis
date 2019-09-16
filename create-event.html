@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>BrandSauce</title>
+  <title>Possitech</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
         <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div> -->
-        <div class="sidebar-brand-text mx-3" style="color: #fff">BrandSauce</div>
+        <div class="sidebar-brand-text mx-3" style="color: #fff">Possitech</div>
       </a>
 
       <!-- Divider -->
@@ -51,7 +51,7 @@
           <i class="fas fa-fw fa-plus"></i>
           <span>Create Event</span></a>
       </li>
-     
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -93,7 +93,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-            
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -114,14 +114,14 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create Event</h1>
           </div>
-          
+
           <div class="box">
-             
+
           <form class="form" id="formId" >
-           
+
               <div class="row text-center">
-                
-                  <div class="col-lg-6"> 
+
+                  <div class="col-lg-6">
                     <div class="content" onclick="clickInput1()">
                       <div class="content-overlay"   >
                         <div class="content-details fadeIn-bottom">
@@ -137,13 +137,13 @@
                          <!--<div class="content-details fadeIn-bottom">-->
                            <!--<h3 class="content-title">Upload</h3>-->
                          <!--</div>-->
-                 
+
                        <input type="file"  id="file" class="form-control" onchange="uploadLogo()"  style="display:none;"/>
-                 
+
                      </div>
                      <div class="img-title">Upload Logo</div>
                   </div>
-                  <div class="col-lg-6"> 
+                  <div class="col-lg-6">
                       <div class="content" style="border-radius: 0px" onclick="clickInput2()">
                           <div class="content-overlay"   >
                             <div class="content-details fadeIn-bottom">
@@ -159,9 +159,9 @@
                              <!--<div class="content-details fadeIn-bottom">-->
                                <!--<h3 class="content-title">Upload</h3>-->
                              <!--</div>-->
-                     
+
                            <input type="file"  id="runinput" class="form-control" onchange="uploadProgramLineUp()" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"  style="display:none;"/>
-                     
+
                          </div>
                          <div class="img-title">Upload Program Lineup</div>
                   </div>
@@ -174,25 +174,25 @@
                 <fieldset>
                   <label class="mb-0" for="eventName">Event Name</label>
                       <input class="form-control" id="eventName" name="eventName" required="" type="text">
-                   
-                                          
+
+
                                 <label class="mb-0" for="rating">Rating Message</label>
                                 <textarea class="form-control" id="rating1" name="rating1" required="" rows="2"></textarea>
-                                                     
-                        
+
+
                                 <label class="mb-0" for="submitMessage">Submit Message</label>
                                 <textarea class="form-control" id="submitMessage" name="submitMessage" required="" rows="2"></textarea>
-                            
-                        
+
+
                                 <label class="mb-0" for="description">Description</label>
                                 <textarea  class="form-control" id="description" name="description1" required="" rows="2"></textarea>
-                         
+
                       <div style="margin-top: 35px">
                           <button onclick="createEvents()" class="btn btn-primary btn-md float-right" type="button">Create Event</button>
                       </div>
-                     
+
               </fieldset>
-                </div> 
+                </div>
               </div>
               </div>
              </div>
@@ -244,13 +244,13 @@
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  
+
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   <script src="js/api.js"></script>
   <script>
-    var displayName = document.querySelector('#displayName');  
+    var displayName = document.querySelector('#displayName');
 
     if(localStorage.getItem('data')){
         let data = JSON.parse(localStorage.getItem('data'));

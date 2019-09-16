@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>BrandSauce</title>
+  <title>Possitech</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
         <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div> -->
-        <div class="sidebar-brand-text mx-3" style="color: #fff">BrandSauce</div>
+        <div class="sidebar-brand-text mx-3" style="color: #fff">Possitech</div>
       </a>
 
       <!-- Divider -->
@@ -77,7 +77,7 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-  
+
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -93,7 +93,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-             
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -123,11 +123,11 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive" id="eventTab">
-                   
+
                     </div>
                   </div>
 
-      
+
               </div>
         <!-- /.container-fluid -->
 
@@ -173,12 +173,12 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  
+
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   <script src="js/api.js"></script>
   <script>
-    var displayName = document.querySelector('#displayName');  
+    var displayName = document.querySelector('#displayName');
 
     if(localStorage.getItem('data')){
         let data = JSON.parse(localStorage.getItem('data'));
@@ -186,12 +186,12 @@
     };
 
     function displayContent(){
-      
+
       getEvents();
-   
+
       setTimeout(eventTable, 3000);
       }
-    
+
     document.body.onload = displayContent;
   </script>
   <script src="js/demo/datatables-demo.js"></script>

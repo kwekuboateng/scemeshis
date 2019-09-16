@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>BrandSauce</title>
+  <title>Possitech</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
         <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div> -->
-        <div class="sidebar-brand-text mx-3" style="color: #fff">BrandSauce</div>
+        <div class="sidebar-brand-text mx-3" style="color: #fff">Possitech</div>
       </a>
 
       <!-- Divider -->
@@ -73,7 +73,7 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-  
+
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -89,7 +89,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-             
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -109,7 +109,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">List of Attendants</h1>
-           
+
           </div>
                 <!-- DataTales Example -->
                 <div id="content" class="card shadow mb-4">
@@ -122,11 +122,11 @@
                     <div class="table-responsive" id="eventTab">
                       <div id="loading" class="loading"></div>
 
-                    
+
                     </div>
                   </div>
 
-      
+
               </div>
         <!-- /.container-fluid -->
 
@@ -170,7 +170,7 @@
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  
+
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   <script src="js/api.js"></script>
@@ -184,10 +184,10 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-    
-    var id = getParameterByName('id'); 
 
-    var displayName = document.querySelector('#displayName');  
+    var id = getParameterByName('id');
+
+    var displayName = document.querySelector('#displayName');
 
     if(localStorage.getItem('data')){
         let data = JSON.parse(localStorage.getItem('data'));
@@ -197,12 +197,12 @@
 
 
     function displayContent(){
-      
+
       getSingleEvent(id);
-   
+
       setTimeout(attendentTable, 3000);
       }
-    
+
     document.body.onload = displayContent;
   </script>
  <script src="https://unpkg.com/jspdf"></script>
@@ -212,7 +212,7 @@
       const doc = new jsPDF();
       doc.autoTable({html: '#dataTable'});
       doc.save('attendants.pdf');
-        
+
     }
 </script>
 <script>
@@ -245,14 +245,14 @@
 function export_table_to_csv(html, filename) {
 	var csv = [];
 	var rows = document.querySelectorAll("table tr");
-	
+
     for (var i = 0; i < rows.length; i++) {
 		var row = [], cols = rows[i].querySelectorAll("td, th");
-		
-        for (var j = 0; j < cols.length; j++) 
+
+        for (var j = 0; j < cols.length; j++)
             row.push(cols[j].innerText);
-        
-		csv.push(row.join(","));		
+
+		csv.push(row.join(","));
 	}
 
     // Download CSV

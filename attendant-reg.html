@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>BrandSauce</title>
+  <title>Possitech</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,8 +33,8 @@
                         </div>
                       </div>
                       <div class="card-body" style="background: black">
-                         
-    
+
+
                         <form id="attendantForm" class="user" style="background: black">
                                 <div class="form-group">
                                     <label  title="text">Full Name</label>
@@ -61,8 +61,8 @@
                                           <input type="checkbox" class="custom-control-input" id="customCheck">
                                           <label class="custom-control-label" for="customCheck">I consent to the use of my personal data in accordance with Ghana Data Protection Act, 2012 and the EU GDPR</label>
                                         </div>
-                                    
-                                      
+
+
                                       <div class="row" style="margin-top: 20px">
                                         <div class="col-sm-4 col-md-4 col-lg-4">
                                             <a onclick="resetForm()" class="btn btn-danger btn-user btn-block">
@@ -74,9 +74,9 @@
                                                   Submit
                                               </a>
                                           </div>
-                                         
+
                                       </div>
-                         
+
                         </form>
                       </div>
                     </div>
@@ -108,13 +108,13 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-    var myName = getParameterByName('name'); 
-    var id = getParameterByName('id'); 
-    var message = getParameterByName('message'); 
+    var myName = getParameterByName('name');
+    var id = getParameterByName('id');
+    var message = getParameterByName('message');
     var logoUrl = getParameterByName('logoUrl');
-    var pluLink = getParameterByName('pluLink'); 
-    var ratingMessage = getParameterByName('ratingMessage'); 
-    var submitMessage = getParameterByName('submitMessage'); 
+    var pluLink = getParameterByName('pluLink');
+    var ratingMessage = getParameterByName('ratingMessage');
+    var submitMessage = getParameterByName('submitMessage');
     var description = getParameterByName('description');
 
     var img = document.querySelector('#logoUrl');
@@ -124,7 +124,7 @@
 
         function createAttendant (){
       var http = new XMLHttpRequest();
-      var loginUrl = `${baseUrl}/api/attendants` 
+      var loginUrl = `${baseUrl}/api/attendants`
       var params = JSON.stringify({
         name: document.querySelector('#attendantName').value,
         eventId: id,
@@ -134,29 +134,29 @@
         position: document.querySelector('#attendantPosition').value
       });
       console.log(params, 'params')
-      
+
       http.open('POST', loginUrl, true);
- 
+
          //Send the proper header information along with the request
          http.setRequestHeader("Content-Type", "application/json");
 
          http.onreadystatechange = function() {//Call a function when the state changes.
           if(http.readyState == 4 && http.status == 201) {
               events = http.responseText
-              document.getElementById('loading3').style.display = "none"            
+              document.getElementById('loading3').style.display = "none"
               alert(submitMessage);
               window.location.href = `/submitMessage.html?submitMessage=${submitMessage}`
-            
-              
+
+
           }else if(http.readyState == 4 && http.status ==400){
             alert('Please fill all the fields')
           }
       }
         document.getElementById('loading3').style.display = 'inline-block'
         http.send(params);
-        
+
     }
-    
+
   </script>
 
 </body>
