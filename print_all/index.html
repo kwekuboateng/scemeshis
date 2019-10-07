@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Possitech</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../css/brand.css" rel="stylesheet">
+  <link href="../css/avatar.css" rel="stylesheet">
+  <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <style>
+  .row.heading h2 {
+    color: #fff;
+    font-size: 52.52px;
+    line-height: 95px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0 0 40px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    }
+    ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+    .heading.heading-icon {
+    display: block;
+    }
+    .padding-lg {
+    display: block;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    }
+    .practice-area.padding-lg {
+    padding-bottom: 55px;
+    padding-top: 55px;
+    }
+    .practice-area .inner{
+     border:1px solid #999999;
+    text-align:center;
+    margin-bottom:28px;
+    padding:40px 25px;
+    }
+    .our-webcoderskull .cnt-block:hover {
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    border: 0;
+    }
+    .practice-area .inner h3{
+    color:#3c3c3c;
+    font-size:24px;
+    font-weight:500;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 0;
+    }
+    .practice-area .inner p{
+    font-size:14px;
+    line-height:22px;
+    font-weight:400;
+    }
+    .practice-area .inner img{
+    display:inline-block;
+    }
+
+
+    .our-webcoderskull{
+    background: url("http://www.webcoderskull.com/img/right-sider-banner.png") no-repeat center top / cover;
+
+    }
+    .our-webcoderskull .cnt-block{
+    float:left;
+    width:100%;
+    background:#fff;
+    padding:30px 20px;
+    text-align:center;
+    border:2px solid #d5d5d5;
+    margin: 0 0 28px;
+    }
+    .our-webcoderskull .cnt-block figure{
+    width:148px;
+    height:148px;
+    border-radius:100%;
+    display:inline-block;
+    margin-bottom: 15px;
+    }
+    .our-webcoderskull .cnt-block img{
+    width:148px;
+    height:148px;
+    border-radius:100%;
+    }
+    .our-webcoderskull .cnt-block h3{
+    color:#2a2a2a;
+    font-size:20px;
+    font-weight:500;
+    padding:6px 0;
+    text-transform:uppercase;
+    }
+    .our-webcoderskull .cnt-block h3 a{
+    text-decoration:none;
+    color:#2a2a2a;
+    }
+    .our-webcoderskull .cnt-block h3 a:hover{
+    color:#337ab7;
+    }
+    .our-webcoderskull .cnt-block p{
+    color:#2a2a2a;
+    font-size:13px;
+    line-height:20px;
+    font-weight:400;
+    }
+    .our-webcoderskull .cnt-block .follow-us{
+    margin:20px 0 0;
+    }
+    .our-webcoderskull .cnt-block .follow-us li{
+    display:inline-block;
+    width:auto;
+    margin:0 5px;
+    }
+    .our-webcoderskull .cnt-block .follow-us li .fa{
+    font-size:24px;
+    color:#767676;
+    }
+    .our-webcoderskull .cnt-block .follow-us li .fa:hover{
+    color:#025a8e;
+    }
+
+  </style>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center">
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div> -->
+        <div class="sidebar-brand-text mx-3" style="color: #fff">Possitech</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="../events.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Events</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="../create-event.html">
+          <i class="fas fa-fw fa-plus"></i>
+          <span>Create Event</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/print">
+          <i class="fas fa-fw fa-print"></i>
+          <span>Print Badges</span></a>
+      </li>
+
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="displayName" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                <i class="fas fa-user fa-lg fa-fw mr-2 text-gray-400"></i>
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="profile.html">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" onclick="logout()" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <button id="printStuff" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Print All Badges</Button>
+          </div>
+          <span id="loading3" class="loading"></span>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                  <div class="card-body">
+                    <section class="our-webcoderskull padding-lg">
+                      <div class="container">
+                        <div class="row heading heading-icon">
+                            <h2>ALL BADGEs</h2>
+                        </div>
+                        <div id="printableDiv" class="row">
+
+                          <div class="col-12 col-md-6 col-lg-4">
+                            <div class="cnt-block equal-hight" style="height: 349px;">
+                              <figure id="imageDiv"></figure>
+                              <h5 class="nameDisplay"> Name</h5>
+                              <p  class="orgDisplay">Organisation</p>
+                              <p  class="postDistplay">Position</p>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+              </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../js/api.js"></script>
+
+  <script>
+
+    function printDiv()
+    {
+
+    var divToPrint=document.getElementById('printableDiv');
+
+    var newWin=window.open('','Print-Window');
+
+    newWin.document.open();
+
+    newWin.document.write('<html><head><title></title>');
+
+    newWin.document.write(
+      `
+        <style>
+        .row.heading h2 {
+          color: #fff;
+          font-size: 52.52px;
+          line-height: 95px;
+          font-weight: 400;
+          text-align: center;
+          margin: 0 0 40px;
+          padding-bottom: 20px;
+          text-transform: uppercase;
+          }
+          ul{
+          margin:0;
+          padding:0;
+          list-style:none;
+          }
+          .heading.heading-icon {
+          display: block;
+          }
+          .padding-lg {
+          display: block;
+          padding-top: 60px;
+          padding-bottom: 60px;
+          }
+          .practice-area.padding-lg {
+          padding-bottom: 55px;
+          padding-top: 55px;
+          }
+          .practice-area .inner{
+           border:1px solid #999999;
+          text-align:center;
+          margin-bottom:28px;
+          padding:40px 25px;
+          }
+          .our-webcoderskull .cnt-block:hover {
+          box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+          border: 0;
+          }
+          .practice-area .inner h3{
+          color:#3c3c3c;
+          font-size:24px;
+          font-weight:500;
+          font-family: 'Poppins', sans-serif;
+          padding: 10px 0;
+          }
+          .practice-area .inner p{
+          font-size:14px;
+          line-height:22px;
+          font-weight:400;
+          }
+          .practice-area .inner img{
+          display:inline-block;
+          }
+
+
+          .our-webcoderskull{
+          background: url("http://www.webcoderskull.com/img/right-sider-banner.png") no-repeat center top / cover;
+
+          }
+          .our-webcoderskull .cnt-block{
+          float:left;
+          width:100%;
+          background:#fff;
+          padding:30px 20px;
+          text-align:center;
+          border:2px solid #d5d5d5;
+          margin: 0 0 28px;
+          }
+          .our-webcoderskull .cnt-block figure{
+          width:148px;
+          height:148px;
+          border-radius:100%;
+          display:inline-block;
+          margin-bottom: 15px;
+          }
+          .our-webcoderskull .cnt-block img{
+          width:148px;
+          height:148px;
+          border-radius:100%;
+          }
+          .our-webcoderskull .cnt-block h3{
+          color:#2a2a2a;
+          font-size:20px;
+          font-weight:500;
+          padding:6px 0;
+          text-transform:uppercase;
+          }
+          .our-webcoderskull .cnt-block h3 a{
+          text-decoration:none;
+          color:#2a2a2a;
+          }
+          .our-webcoderskull .cnt-block h3 a:hover{
+          color:#337ab7;
+          }
+          .our-webcoderskull .cnt-block p{
+          color:#2a2a2a;
+          font-size:13px;
+          line-height:20px;
+          font-weight:400;
+          }
+          .our-webcoderskull .cnt-block .follow-us{
+          margin:20px 0 0;
+          }
+          .our-webcoderskull .cnt-block .follow-us li{
+          display:inline-block;
+          width:auto;
+          margin:0 5px;
+          }
+          .our-webcoderskull .cnt-block .follow-us li .fa{
+          font-size:24px;
+          color:#767676;
+          }
+          .our-webcoderskull .cnt-block .follow-us li .fa:hover{
+          color:#025a8e;
+          }
+
+        </style>
+      `
+    )
+
+    newWin.document.write('<body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+
+    newWin.document.close();
+
+    setTimeout(function(){newWin.close();},10);
+
+    }
+
+    currentList = JSON.parse(localStorage.selectedAttendantList);
+
+    $(document).ready(function(){
+      console.log(currentList);
+      finaleArray = [];
+
+      $.map(currentList, function(val, ind){
+        m = `<div class="col-12 col-md-6 col-lg-4">
+              <div class="cnt-block equal-hight" style="height: 349px;">
+                <figure>
+                  <img src="${localStorage.currentLogoUrl}" alt="Possitech" class="img-responsive">
+                </figure>
+                <h5 class="nameDisplay"> ${val.name}</h5>
+                <p  class="orgDisplay">Organisation: ${val.organisation}</p>
+                <p  class="postDistplay">Position: ${val.position}</p>
+              </div>
+            </div>
+        `
+
+        finaleArray.push(m)
+
+      })
+
+      $("#printableDiv").html(finaleArray);
+
+      $("#printStuff").unbind("click").click(function(){
+        printDiv();
+      })
+
+
+    })
+
+  </script>
+
+</body>
+
+</html>
