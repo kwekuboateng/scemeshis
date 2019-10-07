@@ -19,6 +19,123 @@
   <link href="../css/avatar.css" rel="stylesheet">
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  <style>
+  .row.heading h2 {
+    color: #fff;
+    font-size: 52.52px;
+    line-height: 95px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0 0 40px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    }
+    ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+    .heading.heading-icon {
+    display: block;
+    }
+    .padding-lg {
+    display: block;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    }
+    .practice-area.padding-lg {
+    padding-bottom: 55px;
+    padding-top: 55px;
+    }
+    .practice-area .inner{
+     border:1px solid #999999;
+    text-align:center;
+    margin-bottom:28px;
+    padding:40px 25px;
+    }
+    .our-webcoderskull .cnt-block:hover {
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    border: 0;
+    }
+    .practice-area .inner h3{
+    color:#3c3c3c;
+    font-size:24px;
+    font-weight:500;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 0;
+    }
+    .practice-area .inner p{
+    font-size:14px;
+    line-height:22px;
+    font-weight:400;
+    }
+    .practice-area .inner img{
+    display:inline-block;
+    }
+
+
+    .our-webcoderskull{
+    background: url("http://www.webcoderskull.com/img/right-sider-banner.png") no-repeat center top / cover;
+
+    }
+    .our-webcoderskull .cnt-block{
+    float:left;
+    width:100%;
+    background:#fff;
+    padding:30px 20px;
+    text-align:center;
+    border:2px solid #d5d5d5;
+    margin: 0 0 28px;
+    }
+    .our-webcoderskull .cnt-block figure{
+    width:148px;
+    height:148px;
+    border-radius:100%;
+    display:inline-block;
+    margin-bottom: 15px;
+    }
+    .our-webcoderskull .cnt-block img{
+    width:148px;
+    height:148px;
+    border-radius:100%;
+    }
+    .our-webcoderskull .cnt-block h3{
+    color:#2a2a2a;
+    font-size:20px;
+    font-weight:500;
+    padding:6px 0;
+    text-transform:uppercase;
+    }
+    .our-webcoderskull .cnt-block h3 a{
+    text-decoration:none;
+    color:#2a2a2a;
+    }
+    .our-webcoderskull .cnt-block h3 a:hover{
+    color:#337ab7;
+    }
+    .our-webcoderskull .cnt-block p{
+    color:#2a2a2a;
+    font-size:13px;
+    line-height:20px;
+    font-weight:400;
+    }
+    .our-webcoderskull .cnt-block .follow-us{
+    margin:20px 0 0;
+    }
+    .our-webcoderskull .cnt-block .follow-us li{
+    display:inline-block;
+    width:auto;
+    margin:0 5px;
+    }
+    .our-webcoderskull .cnt-block .follow-us li .fa{
+    font-size:24px;
+    color:#767676;
+    }
+    .our-webcoderskull .cnt-block .follow-us li .fa:hover{
+    color:#025a8e;
+    }
+
+  </style>
 
 </head>
 
@@ -118,39 +235,34 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 id="displayText" class="h3 mb-0 text-gray-800">Attendants</h1>
-
-            <div id="imageDiv">
-            </div>
-
-
-            <a href="../create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Event</a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Print Badge</a>
           </div>
           <span id="loading3" class="loading"></span>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 id="listText" class="m-0 font-weight-bold text-primary">List of Attendants</h6>
-                  </div>
                   <div class="card-body">
-                    <div class="table-responsive" id="eventTab">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Organization</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Print Badge</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tbodyContents">
-
-                        </tbody>
-                      </table>
-                    </div>
+                    <section class="our-webcoderskull padding-lg">
+                      <div class="container">
+                        <div class="row heading heading-icon">
+                            <h2>Individual BADGE</h2>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-md-6 col-lg-4">
+                          </div>
+                          <div id="printableDiv" class="col-12 col-md-6 col-lg-4">
+                            <div class="cnt-block equal-hight" style="height: 349px;">
+                              <figure id="imageDiv"></figure>
+                              <h5 id="nameDisplay"> Name</h5>
+                              <p  id="orgDisplay">Organisation</p>
+                              <p  id="postDistplay">Position</p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-lg-4">
+                          </div>
+                        </div>
+                      </div>
+                    </section>
                   </div>
-
-
               </div>
         <!-- /.container-fluid -->
 
@@ -183,39 +295,14 @@
   <script src="../js/api.js"></script>
   <script>
 
-  currentList = JSON.parse(localStorage.selectedAttendantList);
-
-  function viewSelectedDetails (position) {
-    localStorage.selectedIndividualToPrint = JSON.stringify(currentList[position]);
-    // console.log(localStorage.selectedIndividualToPrint);
-
-    location.href = "/print_badge";
-  }
+    currentPerson = JSON.parse(localStorage.selectedIndividualToPrint);
 
     $(document).ready(function(){
-      $("#listText").val("test")
-      $("#displayText").text(localStorage.currentEventName)
-      $("#imageDiv").html(`<img src="${localStorage.currentLogoUrl}" alt="Possitech" width="50" height="50"></td>`)
-
-      let cFinArray = [];
-
-      $.map(currentList, function(val, ind){
-        // console.log(val);
-        // console.log(attendants);
-
-        row_data = `<tr>
-                      <th scope="row">${val.name}</th>
-                      <td>${val.organisation}</td>
-                      <td>${val.position}</td>
-                      <td><Button class = "btn btn-secondary" onClick = viewSelectedDetails(${ind}) >Print Badge</Button></td>
-                    </tr>`;
-        cFinArray.push(row_data);
-
-      })
-
-      // console.log(finalArray);
-
-      $("#tbodyContents").html(cFinArray);
+      console.log(currentPerson);
+      $("#imageDiv").html(`<img src="${localStorage.currentLogoUrl}" alt="Possitech" class="img-responsive"></td>`);
+      $("#nameDisplay").html(currentPerson.name);
+      $("#orgDisplay").html("Organisation: " + currentPerson.organisation);
+      $("#postDistplay").html("Position: " + currentPerson.position);
     })
 
   </script>
