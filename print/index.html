@@ -185,8 +185,19 @@
   <script>
 
     function getAttendantsAtPosition (position){
+
+      event = JSON.parse(localStorage.events)[position];
+
       localStorage.selectedAttendantList = attendantsArray[position];
+      localStorage.currentLogoUrl = event.logoUrl;
+      localStorage.currentEventName = event.name;
+
+      /*
       console.log(JSON.parse(localStorage.selectedAttendantList));
+      console.log(localStorage.currentLogoUrl);
+      console.log(localStorage.currentEventName);
+      console.log(event);
+      */
 
       location.href = "/list";
 

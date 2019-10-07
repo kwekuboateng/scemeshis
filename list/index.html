@@ -118,14 +118,19 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Attendants</h1>
-            <a href="create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Event</a>
+            <h1 id="displayText" class="h3 mb-0 text-gray-800">Attendants</h1>
+
+            <div id="imageDiv">
+            </div>
+
+
+            <a href="../create-event.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Event</a>
           </div>
           <span id="loading3" class="loading"></span>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">List of Attendants</h6>
+                    <h6 id="listText" class="m-0 font-weight-bold text-primary">List of Attendants</h6>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive" id="eventTab">
@@ -135,7 +140,6 @@
                             <th scope="col">Name</th>
                             <th scope="col">Organization</th>
                             <th scope="col">Position</th>
-                            <th scope="col">Logo</th>
                             <th scope="col">Print Badge</th>
                           </tr>
                         </thead>
@@ -179,12 +183,37 @@
   <script src="../js/api.js"></script>
   <script>
 
+  currentList = JSON.parse(localStorage.selectedAttendantList);
+
+  function viewSelectedDetails (position) {
+    localStorage.selectedIndividualToPrint = JSON.stringify(currentList[position]);
+    console.log(localStorage.selectedIndividualToPrint);
+  }
+
     $(document).ready(function(){
-      currentList = JSON.parse(localStorage.selectedAttendantList);
+      $("#listText").val("test")
+      $("#displayText").text(localStorage.currentEventName)
+      $("#imageDiv").html(`<img src="${localStorage.currentLogoUrl}" alt="Possitech" width="50" height="50"></td>`)
+
+      let cFinArray = [];
 
       $.map(currentList, function(val, ind){
         console.log(val);
+        // console.log(attendants);
+
+        row_data = `<tr>
+                      <th scope="row">${val.name}</th>
+                      <td>${val.organisation}</td>
+                      <td>${val.position}</td>
+                      <td><Button class = "btn btn-secondary" onClick = viewSelectedDetails(${ind}) >Print Badge</Button></td>
+                    </tr>`;
+        cFinArray.push(row_data);
+
       })
+
+      // console.log(finalArray);
+
+      $("#tbodyContents").html(cFinArray);
     })
 
   </script>
