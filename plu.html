@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Register</title>
+  <title>Possitech</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@
                     text-align: center;
                     align-items: center;
                     justify-content: center;
-            
+
                 }
                 .middle-section h1{ font-size: 25px }
                 .middle-section h2{font-weight: 100; font-size: 23px}
@@ -55,11 +55,11 @@
                 </style>
                 <div class="logo-box">
                     <img id="logo" src="" alt="Logo">
-                    
+
                 </div>
                 <div class="middle-section">
                     <h1 id="eventName">
-                        
+
                     </h1>
                             <h2 id="desc">
                        18th July ,2019
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="footer-section">
-                    Powered by The Galamseyers 
+                    Powered by The Galamseyers
                 </div>
             </div>
 
@@ -103,13 +103,13 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-    var myName = getParameterByName('name'); 
-    var id = getParameterByName('id'); 
-    var message = getParameterByName('message'); 
+    var myName = getParameterByName('name');
+    var id = getParameterByName('id');
+    var message = getParameterByName('message');
     var logoUrl = getParameterByName('logoUrl');
-    var pluLink = getParameterByName('pluLink'); 
-    var ratingMessage = getParameterByName('ratingMessage'); 
-    var submitMessage = getParameterByName('submitMessage'); 
+    var pluLink = getParameterByName('pluLink');
+    var ratingMessage = getParameterByName('ratingMessage');
+    var submitMessage = getParameterByName('submitMessage');
     var description = getParameterByName('description')
 
     var eventName = document.querySelector('#eventName');
@@ -121,7 +121,7 @@
     var desc = document.querySelector('#desc');
         desc.innerHTML = description
   </script>
-  
+
 
 </body>
 
